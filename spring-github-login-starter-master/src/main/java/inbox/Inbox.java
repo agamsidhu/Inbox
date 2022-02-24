@@ -3,6 +3,8 @@ package inbox;
 
 import java.nio.file.Path;
 
+import javax.annotation.PostConstruct;
+
 import com.datastax.oss.driver.api.core.CqlSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,13 @@ import inbox.folder.FolderRepository;
 
 @SpringBootApplication
 @RestController
-public class SpringGitHubLoginApplication {
+public class Inbox {
 
 	// @Autowired
 	//  FolderRepository repo;
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringGitHubLoginApplication.class, args);
+		SpringApplication.run(Inbox.class, args);
 
 	
 	}
@@ -45,6 +47,6 @@ public class SpringGitHubLoginApplication {
 		return builder -> builder.withCloudSecureConnectBundle(bundle);
 	}
 
-
+	
 
 }

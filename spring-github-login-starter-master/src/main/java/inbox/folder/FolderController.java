@@ -11,14 +11,21 @@ public class FolderController{
     @Autowired
     private FolderRepository repo;
 
-    @RequestMapping("/getfolder")
+    @RequestMapping("/createFolders")
 	public  void  createFolder(){
 		var myFolder = new Folder();
 		myFolder.setColor("green");
         myFolder.setLabel("label");
 
-        myFolder.setUserId("1");
+        myFolder.setUserId("Agam Sidhu");
 		 repo.save(myFolder);
+
+         var myFolder2 = new Folder();
+         myFolder2.setColor("black");
+        myFolder2.setLabel("label2");
+
+        myFolder2.setUserId("Agam Sidhu");
+		 repo.save(myFolder2);
 		
 	}
 
