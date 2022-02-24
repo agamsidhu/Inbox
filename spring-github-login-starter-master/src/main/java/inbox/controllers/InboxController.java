@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import inbox.folder.FolderRepository;
+import inbox.folder.FolderService;
 
 @Controller
 public class InboxController {
@@ -17,6 +18,7 @@ public class InboxController {
     //detect if user is logged in
 
     @Autowired private FolderRepository repo;
+    @Autowired private FolderService folderService;
 
     @GetMapping(value = "/")
     public String homePage(@AuthenticationPrincipal OAuth2User principal, Model model) {
@@ -30,6 +32,8 @@ public class InboxController {
             System.out.println("username = " + userName);
             var allFolders = repo.findAllByuserId(userName);
             model.addAttribute("userFolders", allFolders);
+            var defaultFolders = folderService.fetchDefaultFolders(userName);
+            model.addAttribute("defaultFolders", defaultFolders);
             model.addAttribute("userName", userName);
 
             return "inbox-page";
